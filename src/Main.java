@@ -6,8 +6,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args)
     {
-        GUI gui = new GUI();
-        
         Album album1 = new Album("Udd gaye", "Ritviz");
         album1.addSongToAlbum("Barish", 5.50);
         album1.addSongToAlbum("Nana karte pyaar", 6.30);
