@@ -36,12 +36,11 @@ public class Main {
             return;
         }
 
-        System.out.println("Currently Playing : ");
-        System.out.println(itr.next());
         boolean isNext = true;
 
         Scanner sc = new Scanner(System.in);
         printMenus();
+        System.out.println("Currently Playing : " + itr.next().toString());
         while(true)
         {
             System.out.println("Enter your choice : ");
@@ -63,7 +62,7 @@ public class Main {
                     if(itr.hasNext())
                     {
                         isNext = true;
-                        System.out.println("Now Playing : " + itr.next());
+                        System.out.println("Now Playing : " + itr.next().toString());
                     }
                     else System.out.println("You have reached end of the list");
                     break;
@@ -81,7 +80,7 @@ public class Main {
                     if(itr.hasPrevious())
                     {
                         isNext = false;
-                        System.out.println("Now Playing : " + itr.previous());
+                        System.out.println("Now Playing : " + itr.previous().toString());
                     }
                     else System.out.println("You are at first song of playlist");
                     break;
@@ -93,13 +92,13 @@ public class Main {
                     }
                     if(isNext)
                     {
-                        System.out.println(itr.previous());
-                        itr.next();
+                        System.out.println("Now Playing : " + itr.previous().toString());
+                        isNext = false;
                     }
                     else
                     {
-                        System.out.println(itr.next());
-                        itr.previous();
+                        System.out.println("Now Playing : " + itr.next().toString());
+                        isNext = true;
                     }
                     break;
                 case 4: // delete the current song
@@ -108,15 +107,16 @@ public class Main {
                         System.out.println("Playlist is empty.");
                         break;
                     }
-                    if(isNext)
-                    {
-                        itr.remove();
-                    }
-                    else
-                    {
-                        itr.remove();
-                    }
+                    itr.remove();
                     System.out.println("Song deleted from playlist.");
+                    if(itr.hasNext())
+                    {
+                        System.out.println("Currently playing : " + itr.next().toString());
+                    }
+                    else if(itr.hasPrevious())
+                    {
+                        System.out.println("Currently playing : " + itr.previous().toString());
+                    }
                     break;
                 case 5 : // print all songs
                     if(myPlaylist.size() == 0)
